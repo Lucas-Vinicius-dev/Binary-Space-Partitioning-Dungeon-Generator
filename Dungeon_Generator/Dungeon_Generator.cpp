@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <set>
 
-#define ANSI_COLOR_BLACK    "\x1b[30m"
 #define ANSI_COLOR_RED     "\x1b[31m" 
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
 #define ANSI_COLOR_RESET    "\x1b[0m"
@@ -32,11 +31,7 @@ double const MAX_ROOM_SIZE_PERCENTAGE = 0.7;
 
 char   const WALL_TILE = '#';
 char   const GROUND_TILE = '.';
-
-char   const HORIZONTAL_TILE = '-';
-char   const VERTICAL_TILE = '|';
 char   const DOOR_TILE = '+';
-
 
 void static fill_grid(std::vector<std::vector<char>>& grid, int rows, int cols, char const tile) {
 	for (int i = 0; i < rows; i++) {
@@ -145,10 +140,6 @@ std::pair<int, int> static create_corridors(std::unique_ptr<Node>& node) {
 		GRID[j][connection.first] = GROUND_TILE;
 		
 	}
-
-	display_grid(GRID);
-	system("pause");
-	system("cls");
 	return connection;
 }
 
@@ -187,11 +178,7 @@ void static create_doors(std::vector<std::vector<char>>& grid, int start_x, int 
 
 				grid[i][j] = DOOR_TILE;
 				grid[pointer_y - 1][j] = DOOR_TILE;
-				display_grid(GRID);
-				system("pause");
-				system("cls");
 			}
-
 		}
 	}
 }
@@ -233,9 +220,6 @@ void static create_room_block(std::unique_ptr<Node>& node) {
 		node->room.x =  x(gen);
 		node->room.y =  y(gen);
 		build_room(node, GRID, GROUND_TILE);
-		display_grid(GRID);
-		system("pause");
-		system("cls");
 		return;
 	}
 
@@ -301,15 +285,9 @@ void static partition(std::queue<Node*>& node_queue, int& max_depth, int& counte
 
 }
 
-
-
 int main() {
 
 	fill_grid(GRID, ROWS, COLS, WALL_TILE);
-
-	display_grid(GRID);
-	system("pause");  
-	system("cls");
 
 	int max_depth = 0;
 	int counter = 0;
