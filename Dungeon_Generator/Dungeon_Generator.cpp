@@ -17,7 +17,7 @@ std::mt19937 gen(rd()); // Mersenne Twister para alta qualidade
 std::vector<std::vector<char>> GRID;
 int    const ROWS = 40;
 int    const COLS = 40;
-int    const ITER = 4; // 4
+int    const ITER = 4;
 
 // Não deixe que o produto da largura e altura mínima ultrapasse o tamanho mínimo da partição, caso contrário, todos as salas serão do tamanho da partição
 int    const MIN_PARTITION_SIZE = 10;
